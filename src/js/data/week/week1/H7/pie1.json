@@ -1,0 +1,19 @@
+{
+    "seriesTooltip": "截止本周，问题",
+    "valueTooltip": "数量占比",
+    "groupTooltip": "",
+    "dataArr": [
+        {
+            "name": "已关闭",
+            "items": [
+                70
+            ]
+        },
+        {
+            "name": "改进中",
+            "items": [
+                30
+            ]
+        }
+    ]
+}

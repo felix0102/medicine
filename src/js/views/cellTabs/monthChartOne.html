@@ -1,0 +1,64 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="whiteBG">
+    <div class="oj-flex">
+        <div class="carST">
+            车型
+        </div>
+        <div class="">
+            <oj-select-one id="basicSelect" value="{{$parent.selectValue}}" style="max-width:10em" on-value-changed="[[$parent.carDidChangeHandler]]">
+                <oj-option value="H7">红旗H7-FL</oj-option>
+                <oj-option value="H8">红旗H8-FL</oj-option>
+            </oj-select-one>
+        </div>
+    </div>
+
+    <div class="columeBarStyle">
+        市场质量信息
+    </div>
+
+    <div id="sampleDemo" style="" class="demo-padding demo-container">
+        <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+            <div id="panelPage">
+
+
+                <div class="oj-panel oj-sm-margin-2x">
+                    <div class="month-count-0"><span data-bind="text:data_divs()[0].title"> </span></div>
+                    <div class="month-count-1"><span data-bind="text:data_divs()[0].count"> </span></div>
+                    <div class="month-count-2"><span data-bind="text:data_divs()[0].unit"> </span></div>
+                </div>
+
+                <div class="oj-panel oj-sm-margin-2x ">
+                    <div class="month-count-0"><span data-bind="text:data_divs()[1].title"> </span></div>
+                    <div class="month-count-1"><span data-bind="text:data_divs()[1].count"> </span></div>
+                    <div class="month-count-2"><span data-bind="text:data_divs()[1].unit"> </span></div>       
+                </div>
+                <div class="oj-panel oj-sm-margin-2x ">
+                    <div class="month-count-0"><span data-bind="text:data_divs()[2].title"> </span></div>
+                    <div class="month-count-1"><span data-bind="text:data_divs()[2].count"> </span></div>
+                    <div class="month-count-2"><span data-bind="text:data_divs()[2].unit"> </span></div>       
+                </div>
+                <div class="oj-panel oj-sm-margin-2x ">
+                    <div class="month-count-0"><span data-bind="text:data_divs()[3].title"> </span></div>
+                    <div class="month-count-1"><span data-bind="text:data_divs()[3].count"> </span></div>
+                    <div class="month-count-2"><span data-bind="text:data_divs()[3].unit"> </span></div>       
+
+                </div>
+                <div class="oj-panel oj-sm-margin-2x">
+                    <div class="month-count-0"><span data-bind="text:data_divs()[4].title"> </span></div>
+                    <div class="month-count-1"><span data-bind="text:data_divs()[4].count"> </span></div>
+                    <div class="month-count-2"><span data-bind="text:data_divs()[4].unit"> </span></div>       
+                </div>
+                <div class="oj-panel oj-sm-margin-2x ">
+                    <!--                    <div class="month-count-0">千车抱怨率</div>-->
+                    <!-- ko foreach: dataurlarr2 -->
+                    <my-line data-url="{{dataurl}}" chart-name="{{chartname}}" />
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

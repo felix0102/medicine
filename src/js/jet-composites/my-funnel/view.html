@@ -1,0 +1,138 @@
+<!--
+  Copyright (c) 2015, 2017, Oracle and/or its affiliates.
+  The Universal Permissive License (UPL), Version 1.0
+-->
+<p class="sub_title_sty" data-bind="text:chartName"></p>
+
+<oj-chart id="funnelChart" class="chartStyle" type="funnel" series="[[seriesValue]]" orientation="vertical" animation-on-display="auto"
+  animation-on-data-change="auto" y-axis.tick-label.scaling="none" value-formats.value.scaling="none" value-formats.series.tooltip-label="[[serToolValue]]"
+  value-formats.value.tooltip-label="[[valToolValue]]" value-formats.group.tooltip-label="[[groupToolValue]]" drilling="on"
+  on-oj-drill="[[abnormalKeyDrillDown]]" style-defaults.three-d-effect="off" style="height:350px;">
+</oj-chart>
+
+<div id="dialogWrapper">
+
+  <oj-dialog style="display:none" id="popDrillingChart2" title="" modality="modeless" >
+
+    <div slot="header" class="oj-helper-clearfix">
+      <span id="dialogTitleId" class="oj-dialog-title" data-bind="text:drillingTitle">
+      </span>
+    </div>
+
+    <div slot="body">
+      <!-- 
+        <oj-table id='abnormalSubTable' aria-label='DoorTable' style="max-height:70vh;"
+                    data='[[dataprovider]]' 
+                    columns-default.sortable='disabled' 
+                    columns='[{"headerText": "业主名称", 
+                    "field": "name"},
+                    {"headerText": "欠费金额", 
+                    "field": "cnt"},
+                    {"headerText": "欠费月数", 
+                    "field": "month"},
+                    {"headerText": "操作", 
+                    "field": "PaperType"}]'>
+          </oj-table>
+          -->
+      <oj-list-view id="listview"  style="height:40vh;"  data="[[dataSource]]"
+        item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('template')]]">
+        <!--
+        <oj-menu slot="contextMenu" style="display:none" aria-label="Swipe Actions" on-oj-action="[[handleMenuItemAction]]" on-oj-before-open="[[handleMenuBeforeOpen]]">
+          <oj-option id="read">Read</oj-option>
+          <oj-option id="more1">More Action 1</oj-option>
+          <oj-option id="more2">More Action 2</oj-option>
+          <oj-option id="tag">Tag</oj-option>
+          <oj-option id="delete">Delete</oj-option>
+        </oj-menu>
+      -->
+      </oj-list-view>
+    </div>
+    <div slot="footer">
+      <oj-button id="okButton" data-bind="click: function() {
+            document.querySelector('#popDrillingChart2').close();
+          }"> 确认
+      </oj-button>
+    </div>
+
+  </oj-dialog>
+</div>
+
+<script type="text/html" id="template">
+  <li style="padding:0" data-bind="attr: {id: id}" class="item-marker">
+      <div class="oj-offcanvas-outer-wrapper">
+        <div class="oj-offcanvas-inner-wrapper">
+
+          <div style="padding:0.8571rem">
+              <div class="oj-flex">
+                  <strong class="oj-text-primary-color">业主：</strong>
+                  <strong class="oj-text-primary-color" data-bind="text: name"></strong>
+                  <strong class="oj-text-primary-color">&nbsp;&nbsp;&nbsp;&nbsp;欠费金额：</strong>
+                  <strong class="oj-text-primary-color" data-bind="text: cnt"></strong>
+              </div>
+              <div class="oj-flex">
+                  <strong class="oj-text-primary-color">拖欠月数：</strong>
+                  <strong class="oj-text-primary-color" data-bind="text: month"></strong>
+                  <strong class="oj-text-primary-color">个月&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                  <strong class="oj-text-sm oj-text-primary-color" data-bind="text: PaperType"></strong>
+              </div>
+              <div class="oj-flex">
+                  <a data-bind="click: function() {
+                    window.location.href = 'tel:13811118888';
+                  }">通知业主</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a data-bind="click: function() {
+                    window.location.href = 'tel:95779';
+                  }">通知物业</a>
+              </div>
+          </div>
+<!--
+           <div tabIndex="-1" data-bind="attr: {id: 'first_toolbar_'+id}" class="oj-offcanvas-start" style="width:75px">
+               <div data-bind="click: $parent.handleRead">
+                   <div class="oj-flex-bar" style="height:100%">
+                       <div class="oj-flex-bar-center-absolute">
+                           <div class="oj-flex oj-sm-flex-direction-column">
+                               <div title=".demo-library-icon-24" role="img" class="oj-flex-item demo-library-icon-24 demo-icon-font-24"></div>
+                               <div style="padding-top: 10px" class="oj-flex-item">Read</div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+          -->
+           <div tabIndex="-1" data-bind="attr: {id: 'second_toolbar_'+id}" class="oj-offcanvas-end" style="width:225px">
+            <!--   
+            <div data-bind="click: $parent.handleMore" class="oj-swipetoreveal-more">
+                   <div class="oj-flex-bar" style="height:100%">
+                       <div class="oj-flex-bar-center-absolute">
+                           <div class="oj-flex oj-sm-flex-direction-column">
+                               <div title=".demo-library-icon-24" role="img" class="oj-flex-item demo-library-icon-24 demo-icon-font-24"></div>
+                               <div style="padding-top: 10px" class="oj-flex-item">More</div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+              -->
+               <div data-bind="click: $parent.handleFlag" class="oj-swipetoreveal-flag">
+                   <div class="oj-flex-bar" style="height:100%">
+                       <div class="oj-flex-bar-center-absolute">
+                           <div class="oj-flex oj-sm-flex-direction-column">
+                               <div title=".demo-library-icon-24" role="img" class="oj-flex-item demo-library-icon-24 demo-icon-font-24"></div>
+                               <div style="padding-top: 10px" class="oj-flex-item">通知业主</div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <div data-bind="click: $parent.handleTrash" class="oj-swipetoreveal-alert oj-swipetoreveal-default">
+                   <div class="oj-flex-bar" style="height:100%">
+                       <div class="oj-flex-bar-center-absolute">
+                           <div class="oj-flex oj-sm-flex-direction-column">
+                               <div title=".demo-library-icon-24" role="img" class="oj-flex-item demo-library-icon-24 demo-icon-font-24"></div>
+                               <div style="padding-top: 10px" class="oj-flex-item">通知物业</div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+      </div>
+  </li>
+</script>

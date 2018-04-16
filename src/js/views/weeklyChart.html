@@ -1,0 +1,80 @@
+<!--
+ Copyright (c) 2014, 2017, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+-->
+
+<!--
+ ** Oracle JET V4.1.0 hybrid mobile application header pattern.
+ ** Please see the Oracle JET Cookbook App Shell: Hybrid Mobile demos for
+ ** more information on how to use this pattern.
+-->
+<header role="banner" class="oj-hybrid-applayout-header navHeaderS">
+    <!--
+    <div role="heading" class="oj-hybrid-applayout-bar-title oj-flex-bar-middle">
+        <h1 class="oj-hybrid-applayout-header-title" data-bind="text: pageTitle"></h1>
+    </div>
+    -->
+    <div  class="myheader" data-bind="text:pageTitle"></div>
+
+</header>
+
+<div class="oj-panel oj-sm-margin-2x demo-mypanel">
+    <h3>请输入要查询的药品的批次号</h3>
+
+    <oj-input-text id="text-input" value="{{batchid}}" placeholder="请输入药品批次号"  ></oj-input-text>
+    <p> </p>
+    <oj-button id='button1' class="profileBtn"  on-click='[[buttonMedicineInfo]]'><div style="color: #ffffff;">检查药品信息</div></oj-button>
+</div>
+
+
+
+
+<div class="oj-panel oj-sm-margin-2x demo-mypanel">
+
+
+
+    <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+        <oj-list-view id="listview" aria-label="list using array" 
+                      data="[[dataprovider]]" item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('server_template', true)]]" selection-mode="single">
+        </oj-list-view>
+
+        <script type="text/html" id="server_template">
+            <li data-bind="attr: {id: $data['name']}">
+                <div class="oj-flex">
+
+                    <div class="oj-lg-10 oj-md-10 oj-sm-12">
+
+                        <div class="oj-flex row">
+                            <div class="oj-lg-4 oj-md-4 oj-sm-12">
+                                <span class="data"><b>名称: </b><span data-bind="text: name"></span></span>
+                            </div>
+                            <div class="oj-lg-4 oj-md-4 oj-sm-12">
+                                <span class="data"><b>信息: </b><span data-bind="text: status"></span></span>
+                            </div>
+                            <div class="oj-lg-4 oj-md-4 oj-sm-12">
+                                <span class="data"><b>备注: </b><span data-bind="text: memo"></span></span>
+                            </div>
+                        </div>
+                        <div class="oj-flex">
+                            <div class="oj-lg-4 oj-md-4 oj-sm-12">
+                                <span class="data"><b>时间: </b><span data-bind="text: time"></span></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+            </script>
+
+
+        </div>
+    </div>
+    <div class="oj-panel oj-sm-margin-2x demo-mypanel">
+        备注：药品的追踪查询，通过药品批次来登记查询药品的信息，这儿列出该批次药品在生产，流通，销售环境的所有信息。
+    </div>
+    <oj-dialog style="display:none" id="modalDialogLoading" title="系统提示">
+        <div slot="body" class="div_height_300">
+            系统正在处理中请稍等......
+        </div>
+    </oj-dialog>
+    <div class='div_height_100'></div>

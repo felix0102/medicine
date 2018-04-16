@@ -1,0 +1,605 @@
+/* 
+    Document   : override
+    Created on : <date>
+    Author     : <author>
+    Description:
+        This is where any of your application specific styles should be included
+*/
+
+/* Hides the content area until we are ready to display after paddings have been adjusted. 
+    oj-complete is a marker class that is applied by the appController 
+    after adjusting the content area. */
+
+.myheader {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 5px;
+    color: white;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+
+.aboutmeheader {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 5px;
+    color: white;
+}
+
+
+.oj-hybrid.oj-platform-ios.oj-platform-cordova.oj-hybrid-statusbar-spacer .oj-hybrid-applayout-header, .oj-hybrid.oj-platform-ios.oj-platform-cordova.oj-hybrid-statusbar-spacer .oj-hybrid-applayout-header-no-border {
+    padding-top: 20px;
+    min-height: 64px;
+}
+
+.showWindow{
+    display: inline-flex;
+}
+
+.hideWindow{
+    display: none;
+}
+
+.oj-hybrid-applayout-page {
+    min-height: 100vh;
+    padding-bottom: 68px;
+    background-color: #ffffff;
+}
+
+.divider{
+    height:50px;
+}
+
+.globChartSty{
+    max-height: 600px;
+    min-height: 340px;
+    width:calc(100% - 30px);
+    white-space: normal;
+    margin-right: 30px;
+    width: -moz-calc(100% - 30px);
+    width:-webkit-calc(100% - 30px);
+}
+
+#monthID .oj-popup{
+    width:50%;
+}
+
+
+/* 
+Login
+*/
+
+.loginBG{
+    background-color: white;
+    background: url("images/loginNew.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.loginBG .oj-form-layout{
+    border:none !important;
+}
+
+.loginBG input{
+    color: white;
+    text-align: center;
+}
+
+
+.demo-logo-icon{
+    max-width: 350px;
+    width: 62%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 40%;
+    margin-bottom: 10%;
+    content:url("images/logoIcon.png");
+}
+
+/*PC*/  
+@media screen and (min-width:960px){  
+    .demo-logo-icon{
+        max-width: 350px;
+        width: 80%;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 15%;
+        margin-bottom: 10%;
+        content:url("images/logoIcon.png");
+    }
+}  
+
+
+
+.no-border{
+    border:none !important;
+}
+
+.leftIt{
+    text-align: left !important;
+}
+
+oj-input-text{
+    border-bottom:1px solid #f9f9f9;
+}
+
+oj-input-password{
+    border-bottom:1px solid #f9f9f9;
+}
+
+.oj-user-icon{
+    content:url("images/userIcon.png");
+    width: 45px;
+    display: inline-block;
+}
+
+.oj-pass-icon{
+    content:url("images/passIcon.png");
+    width: 45px;
+    display: inline-block;
+}
+
+#form-container{
+    position: absolute;
+    bottom: 100px;
+    width: 100%;
+}
+
+#form-container .oj-form-layout .oj-form .oj-flex{
+    margin: 10px 0px 0px 0px;
+}
+
+#form-container .oj-form-layout .oj-form .oj-flex:nth-child(0){
+
+}
+
+
+#form-container .oj-form-layout .oj-form .oj-flex:last-child{
+    margin: 40px 0px 0px 0px;
+}
+
+
+.no-border label{
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 25px;
+}
+
+#loginBtn{
+    width: 283px;
+    background-color: white;;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+#loginBtn .oj-button-text{
+    color:rgb(53, 138, 245);
+}
+
+.oj-button.oj-default.oj-button-half-chrome .oj-button-icon, .oj-button.oj-focus-only.oj-button-half-chrome .oj-button-icon {
+    color: white;
+}
+
+/* day*/
+.dayCell{
+    padding: 5px 0px 10px 0px;
+}
+
+.dayCell .dayCell_title{
+    color: #5a93d2;
+}
+
+.dayCell .dayCell_content{
+    font-size: 16px;
+    padding-top: 10px;
+    color:white;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.dayCell_content .coBlue{ background-color:rgb(35, 123, 177)}
+.dayCell_content .coGreen{  background-color:rgb(104, 193, 130)}
+.dayCell_content .coYellow{  background-color:rgb(250, 213, 92)}
+
+.dayCell_content .oj-flex-item{
+    padding: 4px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.oj-datepicker-popup{
+    top: 60px !important;
+    right: 0px !important;
+    left: auto !important;
+    position: absolute;
+    min-width: 50%;
+    max-width: 300px;
+}
+
+#popup1{
+    border-radius: 8px;
+    width: 70%;
+}
+
+#popup1 .demo-popup-header{
+    text-align: center;
+    border-bottom: 1px solid #83baef;
+}
+
+#popup1 .cellDiv{
+    padding: 7px;
+}
+
+#popup1 .demo-popup-footer{
+    text-align: right;
+}
+
+
+.calenIcon .oj-inputdatetime-input-container {
+    outline: none;
+}
+
+.calenIcon input{
+    display: none;
+}
+
+.calenIcon .oj-inputdatetime-input-trigger{
+    border: none;
+}
+
+a .oj-clickable-icon, a.oj-clickable-icon, a.oj-clickable-icon-nocontext, a:visited .oj-clickable-icon, a:visited.oj-clickable-icon, a:visited.oj-clickable-icon-nocontext, .oj-default .oj-clickable-icon, .oj-default.oj-clickable-icon, .oj-default.oj-clickable-icon-nocontext {
+    color: #fff;
+}
+
+.oj-fwk-icon-calendar:before, .oj-inputdatetime-calendar-icon:before {
+    content: "\e609" !important;
+}
+
+.navHeaderS{
+    background-color: #358af5;
+    border-color: #90aed4;
+}
+
+.oj-inputdatetime, .oj-inputdatetime-date-time, .oj-inputdatetime-date-only, .oj-inputdatetime-time-only {
+    min-width: 0em; 
+}
+
+.oj-hybrid-applayout-header-title {
+    color: #fff;
+}
+
+
+.oj-navigationlist ul .oj-selected{
+    border-bottom: 2px solid #0572ce !important;
+    border-radius: 2px !important;
+}
+
+.oj-navigationlist-app-level.oj-navigationlist-horizontal .oj-navigationlist-item-label {
+    font-size: 0.85rem;
+}
+
+.oj-navigationlist-app-level.oj-navigationlist-horizontal .oj-navigationlist-item.oj-selected a.oj-navigationlist-item-content > .oj-navigationlist-item-label {
+    color: #0572ce;
+    padding-top: 2px;
+}
+
+.headerPadding{
+    padding-top:57px;
+}
+
+.subTitleOfHeader{
+    background-color: #d6d6d6;
+    font-size: 15px;
+    text-align: center;
+    padding: 72px 0px 12px 0px;
+    color: #bb8300;
+}
+
+.columeBarStyle{
+    font-size: 15px;
+    padding: 15px 0px 15px 2px;
+    border-left: 5px solid #498af6;
+    background-color: #f5fdff;
+}
+
+.whiteBG{
+    background-color: white; 
+}
+
+.carST{
+    padding: 7px 50px 5px 5px;
+}
+
+.oj-inputdatetime-calendar-icon, .oj-inputdatetime-time-only .oj-inputdatetime-time-icon {
+    display: block !important; 
+    font-size: 25px;
+    padding-top: 7px;
+}
+
+.oj-select-select {
+    width: 100%;
+}
+
+.oj-select .oj-select-arrow {
+    color: #358af5;
+    padding-top: 5px;
+    display: block !important; 
+}
+
+html:not([dir="rtl"]) .oj-select-select {
+    direction: ltr;
+}
+
+
+.sub_title_sty {
+    padding-left: 10px;
+    padding-top: 10px;
+    color: #045fab;
+}
+
+demo-chart-three-d-effect-control , demo-chart-orientation-control{
+    padding-left: 10px;
+}
+
+demo-chart-three-d-effect-control oj-buttonset-one , demo-chart-orientation-control oj-buttonset-one{
+    margin-bottom:15px;
+}
+
+#sun-chart-container{
+    padding:10px;
+}
+
+.sunDesWords{
+    color: slategray;   
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.oj-popup-week{
+    border-radius:4px;
+    min-height:60vh;
+    max-height:90vh;
+    width: 94%;
+}
+
+.demo-page1-hide , .demo-page2-hide{
+    display:none;
+}
+
+.demo-popup-header{
+    text-align:center;
+}
+
+#drillList2 .oj-button.oj-default.oj-button-half-chrome .oj-button-icon, #drillList2 .oj-button.oj-focus-only.oj-button-half-chrome .oj-button-icon {
+    color: #0572ce !important;
+}
+
+#drillList1 .popDivider{
+    border: 1px solid #eaeaea;
+}
+
+#drillList1 {
+    font-size: 16px;
+}
+
+#drillList1 .y1{
+    font-size: 14px;
+}
+
+#drillList1 .y2{
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#drillList1 .y3{
+    font-weight: 300;
+    font-size: 16px;
+    padding-bottom: 8px;
+    width: 98%;
+}
+
+.orange{
+    color: #f9a93e;
+}
+
+.red{
+    color:rgb(237, 102, 71);;
+}
+
+.green{
+    color: darkgreen;
+}
+
+#drillList1 .oj-listview {
+    /*    border-width: 3px 0;*/
+}
+
+#drillList1 ul li{
+    position:relative;
+    background-size: 100% 5px;
+    background-position: 0rem 0; 
+}
+
+.y4 .oj-fwk-icon{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    font-size: 25px;
+    color: #d5dfe5;
+}
+
+
+
+
+#drillList1 .y3 .y5{
+
+    font-weight: 600;
+}
+
+
+
+#drillList1 .oj-focus{
+    background:#d4d4d4;
+    border-color: #d4d4d4;
+    color: white;
+}
+
+
+#drillList1 .oj-listview-item {
+    border-top: none;
+}
+
+#drillList2 .demo-panel{
+    overflow-y: scroll;
+    border-radius: 4px;
+    max-height:calc(90vh - 120px);
+    max-height:-moz-calc(90vh - 120px);
+    max-height:-webkit-calc(90vh - 120px);
+    border:1px solid #a5b6c8;
+}
+
+#drillList2 ul, ol {
+    margin: 0px;
+    padding: 2px 1px 1px 0px;
+    background:#eef3f7;
+    border-style:groove;
+    border: none;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+#drillList2 #buttonIcon2{
+    position: absolute;
+    top: 7px;
+    font-size: 17px;
+}
+
+#drillList2 ul li, ol {
+    background-color: white;
+    margin-top: 2px;
+    min-height: 50px;
+    padding: 5px 2px 0px 5px;
+    position: relative;
+}
+
+#fbBtn{
+    width: 283px;
+    background-color: #5192de;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+#fbBtn .oj-button-text{
+    color:white;
+}
+
+
+.oj-textarea{
+    border: 1px solid #d4d4d6;
+}
+
+
+#drillList2 ul li span:first-child{
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(0, -50%);
+}
+
+#drillList2 ul li span:last-child{
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(0, -50%);
+    width: 60%;
+}
+
+#drillList2 ul li:last-child{
+    height: 80px;
+}
+
+
+
+.demo-mgr-icon{
+    content:url("images/user1.png");
+}
+
+.demo-emp-icon{
+    content:url("images/user2.png");
+}
+
+.profileBorder{
+    margin-top: 10px;
+    padding: 12px 0px 12px 0px;
+    border: 1px dashed #ddd;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 5px #ddd, 0 0 0 10px #fff, 0 0 2px 10px #eee;
+}
+
+.profileBtn{
+    width: 100%;
+    background-color: #358af5;
+    margin-top: 30px;
+    border-radius: 8px;
+}
+
+#profileID .oj-button-jqui.oj-default.oj-button-half-chrome,#profileID .oj-button-jqui.oj-focus-only.oj-button-half-chrome,#profileID .oj-button.oj-default.oj-button-half-chrome .oj-button-button,#profileID .oj-button.oj-focus-only.oj-button-half-chrome .oj-button-button {
+    text-shadow: none;
+    color: #ffffff;
+}
+
+.oj-conveyorbelt-overflow-indicator .oj-conveyorbelt-overflow-icon {
+    cursor: inherit;
+    vertical-align: middle;
+    margin-bottom: 9px;
+}
+.version{
+    margin: 20px;
+    text-align: right;
+    color: #ffffff;
+}
+.version1{
+    margin: 20px;
+    text-align: right;
+    color: #000000;
+}
+.div_height_100{
+    
+    min-height:100px;
+    
+}
+.div_height_300{
+    
+    min-height:300px;
+    
+}
+
+
+.bcs_green{
+    color: darkgreen;
+    font-size: 26px;
+    margin: 30px;
+}
+.bcs_red{
+    color: red;
+    margin: 30px;
+    font-size: 26px;
+}
+.bcs_black{
+    color: black;
+    margin: 30px;
+    font-size: 26px;
+}

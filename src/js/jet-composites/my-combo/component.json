@@ -1,0 +1,27 @@
+{
+  "name": "my-combo",
+  "displayName": "my-combo",
+  "description": "Describe your component here",
+  "version": "1.0.0",
+  "jetVersion": "^4.1.0",
+  "properties": {
+    "dataUrl": {
+      "type": "string"
+    },"chartName": {
+      "type": "string"
+    },"stackValue": {
+      "type": "string"
+    },"orientationValue": {
+      "type": "string"
+    }
+  },
+  "methods": {
+
+  }, 
+  "events": {
+
+  }, 
+  "slots": {
+
+  }
+}

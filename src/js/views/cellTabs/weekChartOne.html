@@ -1,0 +1,53 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="whiteBG">
+    <div class="oj-flex">
+        <div class="carST">
+            车型
+        </div>
+        <div class="">
+            <oj-select-one id="basicSelect" value="{{$parent.selectValue}}" style="max-width:10em" on-value-changed="[[$parent.carDidChangeHandler]]">
+                <oj-option value="H7">红旗H7-FL</oj-option>
+                <oj-option value="H8">红旗H8-FL</oj-option>
+            </oj-select-one>
+        </div>
+    </div>
+    <div class="oj-flex columeBarStyle">
+        <div class="oj-flex-item">
+            市场信息
+        </div>
+        <div class="oj-flex-item" data-bind="text: titleOne">
+            新红旗H7-FL自2018-9-21上市
+        </div>
+    </div>
+
+
+
+    <div id="sampleDemo" style="" class="demo-padding demo-container">
+        <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+            <div id="panelPage">
+                <div class="oj-panel oj-sm-margin-2x">
+                    <!-- ko foreach: dataurlarr -->
+                    <my-drilling-pie data-url="{{dataurl}}" chart-name="{{chartname}}" inner-radius=".6" center-label="总计90件" />
+                    <!-- /ko -->
+                </div>
+                <div class="oj-panel oj-sm-margin-2x">
+                    <!-- ko foreach: dataurlarr2 -->
+                    <my-line data-url="{{dataurl}}" chart-name="{{chartname}}" />
+                    <!-- /ko -->
+                </div>
+                <div class="oj-panel oj-sm-margin-2x">
+                    <!-- ko foreach: dataurlarr3 -->
+                    <my-combo data-url="{{dataurl}}" chart-name="{{chartname}}" stack-value="on" />
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+    <oj-button on-click='[[drillingButtonAction]]'>从此下钻</oj-button>
+    -->
+</div>

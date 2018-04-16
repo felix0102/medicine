@@ -1,0 +1,27 @@
+{
+  "name": "my-polarchart",
+  "displayName": "my-polarchart",
+  "description": "Describe your component here",
+  "version": "1.0.0",
+  "jetVersion": "^4.1.0",
+  "properties": {
+    "dataUrl": {
+      "type": "string"
+    },"chartName": {
+      "type": "string"
+    },"innerRadius": {
+      "type": "number"
+    },"centerLabel": {
+      "type": "string"
+    }
+  },
+  "methods": {
+
+  }, 
+  "events": {
+
+  }, 
+  "slots": {
+
+  }
+}

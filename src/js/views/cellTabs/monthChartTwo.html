@@ -1,0 +1,50 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<div class="whiteBG">
+    <div class="oj-flex">
+        <div class="carST">
+            车型
+        </div>
+        <div class="">
+            <oj-select-one id="basicSelect" value="{{$parent.selectValue}}" style="max-width:10em" on-value-changed="[[$parent.carDidChangeHandler]]">
+                <oj-option value="H7">红旗H7-FL</oj-option>
+                <oj-option value="H8">红旗H8-FL</oj-option>
+            </oj-select-one>
+        </div>
+    </div>
+    <div class="columeBarStyle">
+        生产质量状态
+    </div>
+
+    <div id="sampleDemo" style="" class="demo-padding demo-container">
+        <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+            <div id="panelPage">
+                <div class="oj-panel oj-sm-margin-2x">
+                    <!-- ko foreach: dataurlarr -->
+                    <my-combo data-url="{{dataurl}}" chart-name="{{chartname}}" stack-value="on" />
+                    <!-- /ko -->
+                </div>
+                <div class="oj-panel oj-sm-margin-2x">
+                    <!-- ko foreach: dataurlarr2 -->
+                    <my-lineArea data-url="{{dataurl}}" chart-name="{{chartname}}" ref-value="[{'text': '目标值', 'type': 'line', 'value': 0.15, color: '#FAD55C', 'displayInLegend': 'on', 'lineWidth': 1, 'location': 'back', 'shortDesc': '目标0.15件/台'}]"  />
+                    <!-- /ko -->
+                </div>
+                <div class="oj-panel oj-sm-margin-2x">
+                    <!-- ko foreach: dataurlarr3 -->
+                    <my-line data-url="{{dataurl}}" chart-name="{{chartname}}"  />
+                    <!-- /ko -->
+                </div>
+                <div class="oj-panel oj-sm-margin-2x">
+                    <!-- ko foreach: dataurlarr4 -->
+                    <my-line data-url="{{dataurl}}" chart-name="{{chartname}}" ref-value="[{'text': '目标值', 'type': 'line', 'value': 1, color: '#FAD55C', 'displayInLegend': 'on', 'lineWidth': 1, 'location': 'back', 'shortDesc': ''}]"  />
+                    <!-- /ko -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

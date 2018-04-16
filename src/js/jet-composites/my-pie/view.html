@@ -1,0 +1,27 @@
+<!--
+  Copyright (c) 2015, 2017, Oracle and/or its affiliates.
+  The Universal Permissive License (UPL), Version 1.0
+-->
+<p class="sub_title_sty" data-bind="text:chartName"></p>
+<div id='chart-container'>
+    <oj-chart id="pieChart" class="chartStyle globChartSty"
+              type="pie" 
+              series="[[pieSeriesValue]]"
+              animation-on-display="auto"
+              legend.position ="bottom"
+              animation-on-data-change="auto"
+              style-defaults.three-d-effect="[[threeDValue]]"
+              hide-and-show-behavior="withRescale"
+              value-formats.value.scaling ="none"
+              y-axis.tick-label.scaling ="none"
+              value-formats.series.tooltip-label="[[serToolValue]]"
+              value-formats.value.tooltip-label="[[valToolValue]]"
+              value-formats.group.tooltip-label="[[groupToolValue]]"
+              style-defaults.pie-inner-radius="[[innerRadius]]"
+              pie-center.label="[[centerLabel]]"
+              style="">
+    </oj-chart>
+    <!-- 2D/3D toggle button -->
+    <demo-chart-three-d-effect-control id="threeDControl" three-d-effect="{{threeDValue}}" aria-controls="pieChart">
+    </demo-chart-three-d-effect-control>
+</div>

@@ -1,0 +1,25 @@
+<!--
+  Copyright (c) 2015, 2017, Oracle and/or its affiliates.
+  The Universal Permissive License (UPL), Version 1.0
+-->
+<p class="sub_title_sty" data-bind="text:chartName"></p>
+<oj-chart id="polarChart" class="chartStyle"
+          coordinate-system="polar"
+          type="line"
+          stack="off"
+          polar-grid-shape="polygon"
+          series="[[seriesValue]]"
+          groups="[[groupsValue]]"
+          animation-on-display="auto"
+          hover-behavior="dim"
+          y-axis.tick-label.scaling ="none"
+          value-formats.value.scaling ="none"
+          value-formats.series.tooltip-label="[[serToolValue]]"
+          value-formats.value.tooltip-label="[[valToolValue]]"
+          value-formats.group.tooltip-label="[[groupToolValue]]"
+          style-defaults.data-item-gaps="100"
+          x-axis.data-max="100"
+          style="height:350px;">
+</oj-chart>
+
+

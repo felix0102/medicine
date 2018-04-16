@@ -1,0 +1,11 @@
+
+<oj-buttonset-one aria-label="Choose a stack setting" disabled="[[$props.disabled]]" focus-management="[[$props.focusManagement]]" value="{{$props.stack}}" chroming="half" display="icons">
+    <oj-option value="off">
+      <span slot="startIcon" data-bind="css: unstackedIcon"></span>
+      <span>Unstacked</span>
+    </oj-option>
+    <oj-option value="on">
+      <span slot="startIcon" data-bind="css: stackedIcon"></span>
+      <span>Stacked</span>
+    </oj-option>
+  </oj-buttonset-one>

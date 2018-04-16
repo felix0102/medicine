@@ -1,0 +1,25 @@
+<!--
+  Copyright (c) 2015, 2017, Oracle and/or its affiliates.
+  The Universal Permissive License (UPL), Version 1.0
+-->
+<p class="sub_title_sty" data-bind="text:chartName"></p>
+<oj-chart id="barChart" class="chartStyle globChartSty"
+          type="bar" 
+          series="[[seriesValue]]"
+          groups="[[groupsValue]]" 
+          orientation="[[orientationValue]]"
+          stack="[[stackValue]]"
+          animation-on-display="auto"
+          animation-on-data-change="auto"
+          legend.position ="bottom"
+          hide-and-show-behavior="withRescale"
+          y-axis.tick-label.scaling ="none"
+          y-axis.reference-objects= "[[yref]]"
+          value-formats.value.scaling ="none"
+          value-formats.series.tooltip-label="[[serToolValue]]"
+          value-formats.value.tooltip-label="[[valToolValue]]"
+          value-formats.group.tooltip-label="[[groupToolValue]]"
+          style="">
+</oj-chart>
+<demo-chart-orientation-control id="orientationControl" type="bar" focus-management="none" orientation="{{orientationValue}}">
+</demo-chart-orientation-control>

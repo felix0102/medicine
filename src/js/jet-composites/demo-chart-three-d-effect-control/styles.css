@@ -1,0 +1,35 @@
+/* This is to prevent the flash of unstyled content before the composite properties have been setup. */
+demo-chart-three-d-effect-control:not(.oj-complete) {
+  visibility: hidden;
+}
+
+.demo-c3dec-2d,
+.demo-c3dec-3d {
+  height: 24px;
+  width: 24px;
+}
+
+.demo-c3dec-2d:before,
+.demo-c3dec-3d:before {
+  display: inline;
+}
+
+.demo-c3dec-2d:before {
+  content: url("./resources/2d_ena.svg");
+}
+.oj-hover .demo-c3dec-2d:before {
+  content: url("./resources/2d_ovr.svg");
+}
+.oj-selected .demo-c3dec-2d {
+  content: url("./resources/2d_dwn.svg");
+}
+
+.demo-c3dec-3d:before {
+  content: url("./resources/3d_ena.svg");
+}
+.oj-hover .demo-c3dec-3d:before {
+  content: url("./resources/3d_ovr.svg");
+}
+.oj-selected .demo-c3dec-3d:before {
+  content: url("./resources/3d_dwn.svg");
+}

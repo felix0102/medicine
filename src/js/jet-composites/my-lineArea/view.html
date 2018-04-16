@@ -1,0 +1,31 @@
+<!--
+  Copyright (c) 2015, 2017, Oracle and/or its affiliates.
+  The Universal Permissive License (UPL), Version 1.0
+-->
+
+<!--<div class="chartStyle">-->
+
+
+
+<p class="sub_title_sty" data-bind="text:chartName"></p>
+
+
+<oj-chart id="lineAreaChart" class="chartStyle globChartSty"
+          type="lineWithArea"
+          series="[[seriesValue]]"
+          groups="[[groupsValue]]" 
+          y-axis.tick-label.scaling ="none"
+          value-formats.value.scaling ="none"
+          value-formats.series.tooltip-label="[[serToolValue]]"
+          value-formats.value.tooltip-label="[[valToolValue]]"
+          value-formats.group.tooltip-label="[[groupToolValue]]"
+          animation-on-display="auto"
+          legend.position ="bottom"
+          animation-on-data-change="auto"
+          orientation="vertical"
+          stack="off"
+          hover-behavior="dim"
+          style="">
+</oj-chart>
+
+<!--</div>-->

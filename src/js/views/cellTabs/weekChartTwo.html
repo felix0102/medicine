@@ -1,0 +1,136 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="whiteBG" id="weekTwoPage">
+    <div class="oj-flex">
+        <div class="carST">
+            车型
+        </div>
+        <div class="">
+            <oj-select-one id="basicSelect" value="{{$parent.selectValue}}" style="max-width:10em" on-value-changed="[[$parent.carDidChangeHandler]]">
+                <oj-option value="H7">红旗H7-FL</oj-option>
+                <oj-option value="H8">红旗H8-FL</oj-option>
+            </oj-select-one>
+        </div>
+    </div>
+    <!--<my-sunburst chart-name="质量整改单" />-->
+    <div id="sampleDemo" style="" class="demo-padding demo-container">
+        <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+            <div id="panelPage">
+                <div class="oj-panel oj-sm-margin-2x">
+                    <div id='sunburst-container' style="padding: 10px;text-align:center;">
+                        <oj-sunburst animation-on-display="auto" node-defaults.label-display="rotated" nodes="[[nodeValues]]" selection-mode="single"
+                                     drilling="on" on-oj-drill='[[listener]]' style="width:85%;margin: 0 auto;">
+                        </oj-sunburst>
+
+                        <div class="sunDesWords" data-bind="text: sunDes"></div>
+                    </div>
+                </div>
+                <div class="oj-panel oj-sm-margin-2x" data-bind="visible: isManager()">
+                    <!-- ko foreach: dataurlarr -->
+                    <my-bar data-url="{{dataurl}}" chart-name="{{chartname}}" stack-value="on" />
+                    <!-- /ko -->
+                </div>
+                <div class="oj-panel oj-sm-margin-2x" data-bind="visible: isManager()">
+                    <!-- ko foreach: dataurlarr2 -->
+                    <my-bar data-url="{{dataurl}}" chart-name="{{chartname}}" stack-value="on" />
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="popupWrapper">
+        <oj-popup class="demo-popup oj-popup-week" id="popupWeek" 
+                  tail="none" position.my.horizontal="center" position.my.vertical="center"
+                  position.at.horizontal="center" position.at.vertical="center"
+                  position.of="window" position.offset.y="-10"
+                  modality="modal" 
+                  data-bind="event:{'ojAnimateStart': startAnimationListener}">
+            <div class="demo-popup-body">
+                <div class="demo-popup-header">
+                    <h5>质量问题整改表</h5>
+                    <oj-button style="position: absolute;right: 10px;top: 7px;font-size: 20px;" id="btnCancel" 
+                               data-bind="click: backToWeekPage">
+                        X
+                    </oj-button>
+                </div>
+                <div class="demo-popup-content">
+                    <div id="listviewContainer" class="demo-container">
+
+                        <div id="drillList1" class="demo-page">
+                            <oj-list-view id="weeklistview" aria-label="drill down list" style="max-height: 70vh;"
+                                          data="[[dataProvider]]" item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('note_template', true)]]" on-current-item-changed="[[gotoContent]]">
+                            </oj-list-view>
+                        </div>
+
+                        <div id="drillList2" class="demo-page demo-page2-hide">
+                            <oj-button id="buttonIcon2" on-click="[[gotoList]]">
+                                <span slot="startIcon" class="oj-fwk-icon-caret-start oj-fwk-icon"></span>
+                                返回
+                            </oj-button>
+                            <div class="demo-panel">
+                                <ul style="list-style-type:none">
+                                    <li> <span>编号*</span><span data-bind="text: po1">L01203YT</span></li>
+                                    <li> <span>汽车型号</span><span data-bind="text: po2">红旗H7-FL</span></li>
+                                    <li> <span>责任单位</span><span data-bind="text: po3">质保部</span></li>
+                                    <li> <span>时间要求</span><span data-bind="text: po4">2天内提供质量整改方案</span></li>
+                                    <li> <span>问题描述</span><span data-bind="text: po5">车辆启动后显示“废气监测系统故障”</span></li>
+                                    <li> <span>完成情况</span><span data-bind="text: po6">已完成</span></li>
+                                    <li data-bind="visible: isManager()"> <span>审批评价</span><span><oj-text-area id="text-area" value="{{sugValue}}"></oj-text-area></span></li>
+                                </ul>
+                                <div class="oj-flex no-border" style="text-align:center;margin: 30px 0px 30px 0px;"  data-bind="visible: isManager()">
+                                    <oj-button id='fbBtn' on-click='[[fbbuttonClick]]'>
+                                        提交
+                                    </oj-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script type="text/html" id="note_template">
+                        <li data-bind="attr: {id: 'item'+id}">
+                            <div class="">
+                                <div class="y1" data-bind="text: k1">2018年1月12日 15:23</div>
+                                <div class="y2" data-bind="text: k2,css: $parent.k2chech(k2) ? 'red' : 'orange'">通知级</div>
+                                <div class="popDivider"></div>
+                                <div class="y3">
+                                    <div>
+                                        <span>责任单位：</span><span data-bind="text: k3">质保部</span>
+                                    </div>
+                                    <div>
+                                        <span>时间要求：</span><span data-bind="text: k4">2天内提供质量整改方案</span>
+                                    </div>
+                                    <div>
+                                        <span>汽车型号：</span><span data-bind="text: k5">红旗H7-FL</span>
+                                    </div>
+                                    <div>
+                                        <span>问题描述：</span><span data-bind="text: k6">车辆启动后显示“废气监测系统故障”</span>
+                                    </div>
+                                    <div>
+                                        <span>完成状态：</span><span class="y5" data-bind="text: k7,css: $parent.k7chech(k7) ? 'red' : 'green'">已完成</span>
+                                    </div>
+                                </div>
+                                <div class="oj-flex-bar-end oj-sm-align-items-center y4">
+                                    <div role="presentation" class="oj-flex-item oj-fwk-icon oj-listview-drill-icon"></div>
+                                </div>   
+                                <!--                                <div class="oj-flex-bar-middle oj-flex-bar">
+                                                                    <div class="oj-flex-bar-middle" style="font-weight: bold" data-bind="text: name"></div>
+                                                                    <div class="oj-flex-bar-end"><span class="oj-flex-item" data-bind="text: date"></span></div>
+                                                                </div>
+                                                                <div class="oj-flex-bar-end oj-sm-align-items-center">
+                                                                    <div role="presentation" class="oj-flex-item oj-fwk-icon oj-listview-drill-icon"></div>
+                                                                </div>         -->
+                            </div>
+                        </li>
+                        </script>
+                    </div>
+                </div>    
+            </oj-popup>
+        </div>
+
+    </div>

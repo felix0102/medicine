@@ -1,0 +1,105 @@
+<!--
+ Copyright (c) 2014, 2017, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+-->
+
+<!--
+ ** Oracle JET V4.1.0 hybrid mobile application header pattern.
+ ** Please see the Oracle JET Cookbook App Shell: Hybrid Mobile demos for
+ ** more information on how to use this pattern.
+-->
+<!--
+ Copyright (c) 2014, 2017, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+-->
+
+<!--
+ ** Oracle JET V4.1.0 hybrid mobile application header pattern.
+ ** Please see the Oracle JET Cookbook App Shell: Hybrid Mobile demos for
+ ** more information on how to use this pattern.
+-->
+<header role="banner" class="oj-hybrid-applayout-header navHeaderS">
+    <!--
+    <div role="heading" class="oj-hybrid-applayout-bar-title oj-flex-bar-middle">
+        <h1 class="oj-hybrid-applayout-header-title" data-bind="text: pageTitle"></h1>
+    </div>
+    -->
+    <div  class="myheader" data-bind="text:pageTitle"></div>
+
+</header>
+
+<div class="oj-panel oj-sm-margin-2x demo-mypanel">
+    <div class="oj-flex oj-flex-items-pad profileBorder">
+        <div class="oj-sm-4 oj-flex-item">
+            <img data-bind="css: userImage" class=""/>
+        </div>
+        <div class="oj-sm-8 oj-flex-item"> 
+
+            <div class="version1" >
+                用户:<span data-bind="text:userName" style="display:inline-block;font-size: 22px;color: #7b7b7b"></span>
+            </div>
+            <div class="version1" >
+                版本:<span data-bind="text:version"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="oj-panel oj-sm-margin-2x demo-mypanel">
+    <oj-button id='button1' class="profileBtn" on-click='[[buttonClick1]]'><div style="color: #ffffff;">我是制药厂</div></oj-button>
+    <oj-button id='button2' class="profileBtn" on-click='[[buttonClick2]]'><div style="color: #ffffff;">我是质监局</div></oj-button>
+    <oj-button id='button3' class="profileBtn" on-click='[[buttonClick3]]'><div style="color: #ffffff;">我是运输企业</div></oj-button>
+    <oj-button id='button4' class="profileBtn" on-click='[[buttonClick4]]'><div style="color: #ffffff;">我是药房</div></oj-button>
+    <oj-button id='button5' class="profileBtn" on-click='[[buttonClick5]]'><div style="color: #ffffff;">我是医院</div></oj-button>
+    <oj-button id='button6' class="profileBtn" on-click='[[buttonClick6]]'><div style="color: #ffffff;">我是消费者</div></oj-button>
+    
+</div>
+<div class="oj-panel oj-sm-margin-2x demo-mypanel">
+    <h3>区块链云服务信息</h3>
+    <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+        <oj-list-view id="listview" aria-label="list using array" 
+                      data="[[dataprovider]]" item.renderer="[[oj.KnockoutTemplateUtils.getRenderer('server_template', true)]]" selection-mode="single">
+        </oj-list-view>
+
+        <script type="text/html" id="server_template">
+            <li data-bind="attr: {id: $data['name']}">
+                <div class="oj-flex">
+
+                    <div class="oj-lg-10 oj-md-10 oj-sm-12">
+
+                        <div class="oj-flex row">
+                            <div class="oj-lg-4 oj-md-4 oj-sm-12">
+                                <span class="data"><b>运行的节点数: </b></span> <span data-bind="text: running" class="bcs_green"></span>
+                            </div>
+                            <div class="oj-lg-4 oj-md-4 oj-sm-12">
+                                <span class="data"><b>停止的节点数: </b></span><span data-bind="text: stop"  class="bcs_red"></span>
+                            </div>
+                            <div class="oj-lg-4 oj-md-4 oj-sm-12">
+                                <span class="data"><b>健康状态: </b></span><span data-bind="text: healthPercent" class="bcs_black"></span>
+                            </div>
+                            <div class="oj-lg-4 oj-md-4 oj-sm-12">
+                                <span class="data"><b>数据区块数: </b></span><span data-bind="text: blocks" class="bcs_black"></span>
+                            </div>
+                            <div class="oj-lg-4 oj-md-4 oj-sm-12">
+                                <span class="data"><b>调用的次数: </b></span><span data-bind="text: invokes" class="bcs_black"></span>
+                            </div>
+                            <div class="oj-lg-4 oj-md-4 oj-sm-12">
+                                <span class="data"><b>事务活动数: </b></span><span data-bind="text: transaction_activity" class="bcs_black"></span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </li>
+            </script>
+
+
+        </div>
+</div>    
+<div class='div_height_100'></div>
+
+<oj-dialog style="display:none" id="modalDialogLoading" title="系统提示">
+            <div slot="body" class="div_height_300">
+                系统正在处理中请稍等......
+            </div>
+        </oj-dialog>

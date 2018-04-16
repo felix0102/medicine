@@ -1,0 +1,42 @@
+<!--
+ Copyright (c) 2014, 2017, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+-->
+<div class="loginBG"  style="z-index: 999">
+
+    <div class="demo-logo-icon"></div>
+
+    <div class="oj-form oj-md-labels-inline">
+
+        <div class="oj-flex no-border">
+            <div class="oj-flex-item" style="text-align:right;margin-right:20px;">
+                <div class="oj-user-icon"></div>
+            </div>
+            <div class="oj-flex-item leftIt">
+                <oj-input-text id="control1" style="max-width:10em" value="{{username}}"></oj-input-text>
+            </div>
+        </div>
+        <div class="oj-flex no-border">
+            <div class="oj-flex-item" style="text-align:right;margin-right:20px;">
+                <div class="oj-pass-icon"></div>
+            </div>
+            <div class="oj-flex-item leftIt">
+                <oj-input-password id="control3" style="max-width:10em" value="{{password}}" ></oj-input-password>
+            </div>
+        </div>
+        <div class="oj-flex no-border" style="text-align:center">
+            <oj-button id='loginBtn' on-click='[[buttonClick]]'>
+                登陆
+            </oj-button>
+        </div>
+        <div class="version" >
+            版本:<span data-bind="text:version"></span>
+        </div>
+    </div>
+    <div id="form-container" >
+        <div class="oj-form-layout">
+
+        </div>
+
+    </div>
+</div>

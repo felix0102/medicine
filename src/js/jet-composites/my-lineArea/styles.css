@@ -1,0 +1,7 @@
+my-line:not(.oj-complete){
+  visibility: hidden;
+}
+
+my-line{
+
+}

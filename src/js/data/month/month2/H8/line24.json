@@ -1,0 +1,25 @@
+{
+    "seriesTooltip": "",
+    "valueTooltip": "值",
+    "groupTooltip": "周",
+    "series": [
+        {
+            "name": "实际值",
+            "items": [
+                0.84,
+                0.72,
+                0.65,
+                0.69,
+                0.59
+            ],
+            "type": "line"
+        }
+    ],
+    "groups": [
+        "42周",
+        "43周",
+        "44周",
+        "45周",
+        "46周"
+    ]
+}

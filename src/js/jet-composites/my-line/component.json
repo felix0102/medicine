@@ -1,0 +1,25 @@
+{
+  "name": "my-line",
+  "displayName": "my-line",
+  "description": "Describe your component here",
+  "version": "1.0.0",
+  "jetVersion": "^4.1.0",
+  "properties": {
+    "dataUrl": {
+      "type": "string"
+    },"chartName": {
+      "type": "string"
+    },"refValue": {
+      "type": "string"
+    }
+  },
+  "methods": {
+
+  }, 
+  "events": {
+
+  }, 
+  "slots": {
+
+  }
+}

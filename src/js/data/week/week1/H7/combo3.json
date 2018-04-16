@@ -1,0 +1,9 @@
+{
+    "seriesTooltip": "",
+    "valueTooltip": "",
+    "groupTooltip": "",
+    "series": [{"name" : "完成", "items" : [74, 42, 70, 46], "type": "bar"},
+    {"name" : "未完成", "items" : [18,  6, 14, 22], "type": "bar"},
+    {"name" : "完成率", "items" : [84, 90, 76, 47], "type": "line", "assignedToY2":"on"}],
+    "groups": ["第47周", "第48周", "第49周", "第50周"]
+}

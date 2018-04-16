@@ -1,0 +1,7 @@
+my-pie:not(.oj-complete){
+  visibility: hidden;
+}
+
+my-pie{
+
+}

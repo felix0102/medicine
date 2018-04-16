@@ -1,0 +1,7 @@
+my-polarchart:not(.oj-complete){
+  visibility: hidden;
+}
+
+my-polarchart{
+
+}

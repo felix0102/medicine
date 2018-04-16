@@ -1,0 +1,229 @@
+<!--
+ Copyright (c) 2014, 2017, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+-->
+<div class="oj-hybrid-applayout-page">
+    <div class="oj-applayout-fixed-top">
+        <!--
+         ** Oracle JET V4.1.0 hybrid mobile application header pattern.
+         ** Please see the Oracle JET Cookbook App Shell: Hybrid Mobile demos for
+         ** more information on how to use this pattern.
+        -->
+        <header role="banner" class="oj-hybrid-applayout-header navHeaderS">
+            <!--
+            <div role="heading" class="oj-hybrid-applayout-bar-title oj-flex-bar-middle">
+                <h1 class="oj-hybrid-applayout-header-title" data-bind="text: pageTitle"></h1>
+            </div>
+            -->
+            <div  class="myheader" data-bind="text:pageTitle"></div>
+
+        </header>
+        <div id="div_factory" data-bind="style: { display:factoryShow}">
+            <div class="oj-panel oj-sm-margin-2x demo-mypanel">
+                <h3>请选择要出库的药品</h3>
+
+                <oj-radioset id="radiosetBasicDemoId" labelled-by="mainlabelid"
+                             value="{{currentMedicine}}" >
+                    <oj-option id="blueopt" value="板蓝根">板蓝根</oj-option>
+                    <oj-option id="greenopt" value="乙肝疫苗">乙肝疫苗</oj-option>
+                    <oj-option id="redopt" value="头孢克肟">头孢克肟</oj-option>
+
+                </oj-radioset>
+                <p> </p>
+                <p> </p>
+                <p> </p>
+                <oj-button id='button1' class="profileBtn"  on-click='[[buttonClick]]'><div style="color: #ffffff;">药品出库</div></oj-button>
+            </div>
+            <div class="oj-panel oj-sm-margin-2x demo-mypanel">
+                备注：药品的追溯，从制药厂药品生产完成开始进行。药品出库时，系统会自动生成该药品的批次号，并将相关信息录入到区块链云服务中。药品在以后的所有流通，质检，销售等环节里面，都需要以该批次号为唯一标志，进行信息的录入和查询。
+            </div>
+        </div>
+
+        <div id="div_superviser" data-bind="style:{ display:superviserShow}">
+            <div class="oj-panel oj-sm-margin-2x demo-mypanel">
+                <h3>请输入要质检药品的批次号</h3>
+
+                <oj-input-text id="text-inputSuperviser" value="{{batchid}}" placeholder="请输入药品批次号"  ></oj-input-text>
+                <p> </p>
+                <oj-button id='button1' class="profileBtn"  on-click='[[buttonBatchidCheck]]'><div style="color: #ffffff;">检查药品信息</div></oj-button>
+            </div>
+            <div class="oj-panel oj-sm-margin-2x demo-mypanel">
+                备注：质检部门负责对药品生产，流通，销售的各个环节进行检查，检查结果将会保存到区块链云服务里面。药品质检以批次号为唯一标志，进行信息的录入和查询。
+            </div>
+        </div>
+
+
+        <div id="div_transport " data-bind="style:{ display:transportShow}">
+            <div class="oj-panel oj-sm-margin-2x demo-mypanel">
+                <h3>请输入要运输药品的批次号</h3>
+
+                <oj-input-text id="text-inputTransport" value="{{batchid}}" placeholder="请输入药品批次号"  ></oj-input-text>
+                <p> </p>
+                <oj-button id='button1' class="profileBtn"  on-click='[[buttonBatchidCheck]]'><div style="color: #ffffff;">核对药品信息</div></oj-button>
+
+            </div>
+            <div class="oj-panel oj-sm-margin-2x demo-mypanel">
+                备注：运输企业负责对药品生产，流通，销售的各个环节的运输信息，进行准确及时的录入，药品以批次号为唯一标志，进行运输信息的录入和查询。
+            </div>
+        </div>
+
+
+        <div id="div_pharmacy " data-bind="style:{ display:pharmacyShow}">
+            <div class="oj-panel oj-sm-margin-2x demo-mypanel">
+                <h3>请输入要登记药品的批次号</h3>
+
+                <oj-input-text id="text-inputPharmacy" value="{{batchid}}" placeholder="请输入药品批次号"  ></oj-input-text>
+                <p> </p>
+                <oj-button id='button1' class="profileBtn"  on-click='[[buttonBatchidCheck]]'><div style="color: #ffffff;">核对药品信息</div></oj-button>
+
+            </div>
+            <div class="oj-panel oj-sm-margin-2x demo-mypanel">
+                备注：药房企业负责对进货和销售环节的信息，进行准确及时的录入，药品以批次号为唯一标志，进行销售信息的录入和查询。
+            </div>
+        </div>
+        <div id="div_hospital " data-bind="style:{ display:hospitalShow}">
+            <div class="oj-panel oj-sm-margin-2x demo-mypanel">
+                <h3>请输入要登记药品的批次号</h3>
+
+                <oj-input-text id="text-inputHospital" value="{{batchid}}" placeholder="请输入药品批次号"  ></oj-input-text>
+                <p> </p>
+                <oj-button id='button1' class="profileBtn"  on-click='[[buttonBatchidCheck]]'><div style="color: #ffffff;">核对药品信息</div></oj-button>
+
+            </div>
+            <div class="oj-panel oj-sm-margin-2x demo-mypanel">
+                备注：医院企业负责对进货,使用和销售环节的信息，进行准确及时的录入，药品以批次号为唯一标志，进行药品信息的录入和查询。
+            </div>
+        </div>
+        
+        
+        
+        
+        <oj-dialog style="display:none" id="modalDialogFactory" title="制药厂：药品出库">
+            <div slot="body">
+                出库药品：
+                <br/>批次号：<span data-bind="text:batchid"></span>
+                <oj-input-text id="text-input-memoFactory" value="{{memo}}" placeholder="备注信息"></oj-input-text>
+            </div>
+            <div slot="footer">
+                <oj-button id="okButton" data-bind="click: function() {
+                  document.querySelector('#modalDialogFactory').close();
+                }">  取消出库
+                </oj-button>
+                <oj-button id="okButton" on-click="[[buttonFactory]]">  确认出库
+                </oj-button>
+            </div>
+        </oj-dialog>
+        <oj-dialog style="display:none" id="modalDialogSuperviser" title="质检:药品信息">
+            <div slot="body">
+
+                药品厂商：<span data-bind="text:medicineFactory"></span>
+                <br/>药品批次：<span data-bind="text:batchid"></span>
+                <br/>药品名称：<span data-bind="text:medicineName"></span>
+                <br/>药品备注：<span data-bind="text:medicineMemo"></span>
+                <br/>出库时间：<span data-bind="text:medicineTime"></span>
+                <oj-input-text id="text-input-memoSuperviser" value="{{memo}}" placeholder="备注信息"></oj-input-text>
+            </div>
+            <div slot="footer">
+                <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonQualified]]'>  合格
+                </oj-button>
+                <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonNotQualified]]'>  不合格
+                </oj-button>
+                <oj-button id="okButton" data-bind="click: function() {
+                  document.querySelector('#modalDialogSuperviser').close();
+                }">  取消
+                </oj-button>
+            </div>
+
+        </oj-dialog>
+        <oj-dialog style="display:none" id="modalDialogTransport" title="药品运输:药品信息">
+            <div slot="body">
+
+                药品厂商：<span data-bind="text:medicineFactory"></span>
+                <br/>药品批次：<span data-bind="text:batchid"></span>
+                <br/>药品名称：<span data-bind="text:medicineName"></span>
+                <br/>药品备注：<span data-bind="text:medicineMemo"></span>
+                <br/>出库时间：<span data-bind="text:medicineTime"></span>
+                <oj-checkboxset id="checkboxColdchain" labelled-by="agreeId"
+                                value="{{coldchain}}"
+                                >
+                    <oj-option id="agree" value="冷链运输">冷链运输</oj-option>
+                </oj-checkboxset>
+                <oj-input-text id="text-input-memoTransport" value="{{memo}}" placeholder="备注信息"></oj-input-text>
+            </div>
+            <div slot="footer" >
+
+                <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonTransportStart]]'>  运输开始
+                </oj-button>
+                <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonTransportEnd]]'>  运输结束
+                </oj-button>
+                <oj-button id="okButton" data-bind="click: function() {
+                  document.querySelector('#modalDialogTransport').close();
+                }">  取消
+                </oj-button>
+            </div>
+
+        </oj-dialog>
+        <oj-dialog style="display:none" id="modalDialogPharmacy" title="药房药品登记信息:药品信息">
+            <div slot="body">
+
+                药品厂商：<span data-bind="text:medicineFactory"></span>
+                <br/>药品批次：<span data-bind="text:batchid"></span>
+                <br/>药品名称：<span data-bind="text:medicineName"></span>
+                <br/>药品备注：<span data-bind="text:medicineMemo"></span>
+                <br/>出库时间：<span data-bind="text:medicineTime"></span>
+                <oj-input-text id="text-input-memoPharmacy" value="{{memo}}" placeholder="备注信息"></oj-input-text>
+            </div>
+            <div slot="footer" data-bind="style: { display:superviserCheck}">
+
+                <oj-button id="okButton" on-click='[[buttonPharmacyIn]]'>  药品进货
+                </oj-button>
+                <oj-button id="okButton" on-click='[[buttonPharmacyOut]]'>  药品销售
+                </oj-button>
+                <oj-button id="okButton" data-bind="click: function() {
+                  document.querySelector('#modalDialogPharmacy').close();
+                }">  关闭
+                </oj-button>
+            </div>
+            <div slot="footer" data-bind="style: { display:superviserClose}">
+                <oj-button id="okButton" data-bind="click: function() {
+                  document.querySelector('#modalDialogPharmacy').close();
+                }">  关闭
+                </oj-button>
+            </div>
+        </oj-dialog>
+        
+        <oj-dialog style="display:none" id="modalDialogHospital" title="医院药品登记信息:药品信息">
+            <div slot="body">
+
+                药品厂商：<span data-bind="text:medicineFactory"></span>
+                <br/>药品批次：<span data-bind="text:batchid"></span>
+                <br/>药品名称：<span data-bind="text:medicineName"></span>
+                <br/>药品备注：<span data-bind="text:medicineMemo"></span>
+                <br/>出库时间：<span data-bind="text:medicineTime"></span>
+                <oj-input-text id="text-input-memoHospital" value="{{memo}}" placeholder="备注信息"></oj-input-text>
+            </div>
+            <div slot="footer">
+
+                <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonHospitalIn]]'>  药品进货
+                </oj-button>
+                <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonHospitalOut]]'>  药品使用
+                </oj-button>
+                <oj-button id="okButton" data-bind="click: function() {
+                  document.querySelector('#modalDialogHospital').close();
+                }">  关闭
+                </oj-button>
+            </div>
+            
+        </oj-dialog>
+        <oj-dialog style="display:none" id="modalDialogLoading" title="系统提示">
+            <div slot="body" class="div_height_300">
+                系统正在处理中请稍等......
+            </div>
+        </oj-dialog>
+
+    </div>
+    <div class='div_height_100'></div>
+
+</div>
+
+

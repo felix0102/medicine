@@ -1,0 +1,64 @@
+<!--
+ Copyright (c) 2014, 2017, Oracle and/or its affiliates.
+ The Universal Permissive License (UPL), Version 1.0
+-->
+
+<!--
+ ** Oracle JET V4.1.0 hybrid mobile application header pattern.
+ ** Please see the Oracle JET Cookbook App Shell: Hybrid Mobile demos for
+ ** more information on how to use this pattern.
+-->
+<header role="banner" class="oj-hybrid-applayout-header navHeaderS">
+    <!--
+    <div role="heading" class="oj-hybrid-applayout-bar-title oj-flex-bar-middle">
+        <h1 class="oj-hybrid-applayout-header-title" data-bind="text: pageTitle"></h1>
+    </div>
+    -->
+    <div  class="myheader" data-bind="text:pageTitle"></div>
+
+</header>
+
+
+
+
+
+
+
+<oj-dialog style="display:none" id="modalDialog1" title="出库成功">
+    <div slot="body">
+        出库药品：<span data-bind="text:currentMedicine"></span>
+        <br/>批次号：<span data-bind="text:batchid"></span>
+    </div>
+    <div slot="footer">
+        <oj-button id="okButton" data-bind="click: function() {
+                  document.querySelector('#modalDialog1').close();
+                }">  OK
+        </oj-button>
+    </div>
+</oj-dialog>
+
+
+
+<div class="oj-panel oj-sm-margin-2x demo-mypanel">
+    <h3>最近的100个药品批次列表</h3>
+
+    <oj-table id='table' aria-label='Departments Table'
+              data='[[dataprovider]]' 
+              on-click='[[tableOnClick]]'
+              selection-mode='{"row":"single", "column":"multiple"}'
+              columns-default.sortable='disabled' 
+              columns='[
+              {"headerText": "批次号:", 
+              "field": "batchid"}]'
+              style='width: 100%; height:100%;'>
+    </oj-table>
+</div>
+<oj-dialog style="display:none" id="modalDialogLoading" title="系统提示">
+    <div slot="body" class="div_height_300">
+        系统正在处理中请稍等......
+    </div>
+</oj-dialog>
+<div class="oj-panel oj-sm-margin-2x demo-mypanel">
+    备注：药品的批次列表都应该是和相应的药品紧密绑定和联系的，比如药品批次直接印刷在药品的包装上面，为了方便通过药品批次来跟踪或登记药品的信息，这儿列出最近的100个药品批次列表。
+</div>
+<div class='div_height_100'></div>

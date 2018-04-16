@@ -1,0 +1,8 @@
+{
+    "seriesTooltip": "",
+    "valueTooltip": "",
+    "groupTooltip": "",
+    "series": [{"name" : "实际值", "items" : [83, 50, 48, 79], "type": "bar"},
+    {"name" : "目标3.0级", "items" : [50, 58, 46, 54], "type": "line"}],
+    "groups": ["第47周", "第48周", "第49周", "第50周"]
+}

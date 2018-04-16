@@ -1,0 +1,7 @@
+my-bar:not(.oj-complete){
+  visibility: hidden;
+}
+
+my-bar{
+
+}
