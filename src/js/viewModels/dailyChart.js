@@ -15,21 +15,22 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
      */
     function dailyChartContentViewModel() {
         var self = this;
-        let pageTitle = "";
+        let pageTitle1 = "";
         if (USER_ROLE == "factory")
         {
-            pageTitle = USERNAME + "制药厂";
+            pageTitle1 = USERNAME + "制药厂";
         } else if (USER_ROLE == "superviser") {
-            pageTitle = USERNAME + "质检部";
+            pageTitle1 = USERNAME + "质检部";
         } else if (USER_ROLE == "transport") {
-            pageTitle = USERNAME + "运输公司";
+            pageTitle1 = USERNAME + "运输公司";
         } else if (USER_ROLE == "pharmacy") {
-            pageTitle = USERNAME + "药房";
+            pageTitle1 = USERNAME + "药房";
         } else if (USER_ROLE == "hospital") {
-            pageTitle = USERNAME + "医院";
+            pageTitle1 = USERNAME + "医院";
         }
-        self.pageTitle = ko.observable(pageTitle);
+        self.pageTitle = ko.observable(pageTitle1);
         self.currentMedicine = ko.observable("板蓝根");
+        self.sysTip = ko.observable("")
         self.medicineFactory = ko.observable("");
         self.medicineName = ko.observable("");
         self.medicineMemo = ko.observable("");
@@ -66,13 +67,14 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
         };
         self.buttonFactory = function (data) {
-            
+
             let  currentDate = new Date();
             let batchid = self.batchid();
             let memo = self.memo();
             if (memo.length == 0)
             {
-                alert("请输入备注.");
+                self.sysTip("请输入备注信息.");
+                modalDialogAlert.open();
                 return;
             }
             console.log("batchid:" + batchid);
@@ -88,7 +90,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                 type: 'POST',
                 data: JSON.stringify(payload),
                 success: function (data) {
-                    // alert(self.decryptByDES(data) );
+
                     console.log("batchid" + batchid);
                     let name = self.pageTitle();
                     payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "factory", name, time, "endtime", selectedMedicine, memo, time], "chaincodeVer": BCS_VERSION};
@@ -99,23 +101,27 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                         type: 'POST',
                         data: JSON.stringify(payload),
                         success: function (data) {
-                            // alert(self.decryptByDES(data) );
+
                             let dataJson = parseBlockDataSet(data);
                             if (dataJson.returnCode === "Success")
                             {
 
                                 modalDialogFactory.close();
-                                alert("药品出库成功");
+
+                                self.sysTip("药品出库成功.");
+                                modalDialogAlert.open();
                             } else {
                                 modalDialogFactory.close();
-                                alert("药品出库失败,请稍候再试。");
+
+                                self.sysTip("药品出库失败,请稍候再试。.");
+                                modalDialogAlert.open();
                             }
                             modalDialogLoading.close();
                             //js_saveIOTData(js_dataAll);
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
                             // view("异常！");  
-                            //alert("error");
+
                             console.log(XMLHttpRequest);
                             console.log(textStatus);
                             console.log("errorThrown=" + errorThrown);
@@ -127,7 +133,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // view("异常！");  
-                    //alert("error");
+
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log("errorThrown=" + errorThrown);
@@ -157,7 +163,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                 success: function (data) {
                     console.log(data);
                     modalDialogLoading.close();
-                    // alert(self.decryptByDES(data) );
+
                     let returnCode = data.substring();
                     data = parseBlockDataGet(data);
                     console.log(data);
@@ -187,8 +193,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     } else if (USER_ROLE == "pharmacy")
                     {
                         modalDialogPharmacy.open();
-                    }
-                    else if (USER_ROLE == "hospital")
+                    } else if (USER_ROLE == "hospital")
                     {
                         modalDialogHospital.open();
                     }
@@ -196,7 +201,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // view("异常！");  
-                    //alert("error");
+
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log("errorThrown=" + errorThrown);
@@ -229,11 +234,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     console.log(data);
                     modalDialogLoading.close();
                     modalDialogSuperviser.close();
+                    self.sysTip("质检完成.");
+                    modalDialogAlert.open();
                     //js_saveIOTData(js_dataAll);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // view("异常！");  
-                    //alert("error");
+
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log("errorThrown=" + errorThrown);
@@ -251,7 +258,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
             let memo = self.memo();
             if (memo.length == 0)
             {
-                alert("请输入备注.");
+                self.sysTip("请输入备注信息.");
+                modalDialogAlert.open();
                 return;
             }
             console.log("batchid:" + batchid);
@@ -271,12 +279,14 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     modalDialogLoading.close();
                     console.log(data);
                     modalDialogSuperviser.close();
+                    self.sysTip("质检完成.");
+                    modalDialogAlert.open();
                     //js_saveIOTData(js_dataAll);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     modalDialogLoading.close();
                     // view("异常！");  
-                    //alert("error");
+
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log("errorThrown=" + errorThrown);
@@ -314,11 +324,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     console.log(data);
                     modalDialogLoading.close();
                     modalDialogTransport.close();
+                    self.sysTip("运输开始.");
+                    modalDialogAlert.open();
                     //js_saveIOTData(js_dataAll);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // view("异常！");  
-                    //alert("error");
+
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log("errorThrown=" + errorThrown);
@@ -353,11 +365,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     modalDialogLoading.close();
                     console.log(data);
                     modalDialogTransport.close();
+                    self.sysTip("运输结束.");
+                    modalDialogAlert.open();
                     //js_saveIOTData(js_dataAll);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // view("异常！");  
-                    //alert("error");
+
                     modalDialogLoading.close();
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
@@ -393,11 +407,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     modalDialogLoading.close();
                     console.log(data);
                     modalDialogPharmacy.close();
+                    self.sysTip("药品进货完成.");
+                    modalDialogAlert.open();
                     //js_saveIOTData(js_dataAll);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // view("异常！");  
-                    //alert("error");
+
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log("errorThrown=" + errorThrown);
@@ -432,11 +448,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     modalDialogLoading.close();
                     console.log(data);
                     modalDialogPharmacy.close();
+                    self.sysTip("药品销售完成.");
+                    modalDialogAlert.open();
                     //js_saveIOTData(js_dataAll);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // view("异常！");  
-                    //alert("error");
+
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log("errorThrown=" + errorThrown);
@@ -448,7 +466,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
 
         };
- 
+
         self.buttonHospitalIn = function (data) {
             let  currentDate = new Date();
             let batchid = self.batchid();
@@ -472,11 +490,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     console.log(data);
                     modalDialogLoading.close();
                     modalDialogHospital.close();
+                    self.sysTip("药品进货完成.");
+                    modalDialogAlert.open();
                     //js_saveIOTData(js_dataAll);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // view("异常！");  
-                    //alert("error");
+
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log("errorThrown=" + errorThrown);
@@ -511,11 +531,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     modalDialogLoading.close();
                     console.log(data);
                     modalDialogHospital.close();
+                    self.sysTip("药品使用完成.");
+                    modalDialogAlert.open();
                     //js_saveIOTData(js_dataAll);
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // view("异常！");  
-                    //alert("error");
+
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log("errorThrown=" + errorThrown);
@@ -527,7 +549,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
 
         };
-  
+
 
         function initUserRole() {
             if (USER_ROLE == "factory") {

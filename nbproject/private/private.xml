@@ -3,25 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/week/weekTwo.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/month/monthOne.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/week/bar22.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/day/dayFour.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/css/app.css</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/week/bar23.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/viewModels/weekDrilling.js</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/month/monthTwo.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/week/pie1.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/week/combo3.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/day/dayOne.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/viewModels/cellTabs/weekChartTwo.js</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/week/line2.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/views/dailyChart.html</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/day/dayOne_4.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/viewModels/dailyChart.js</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/viewModels/weeklyChart.js</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/data/week/weekOne.json</file>
-            <file>file:/D:/Porjects/JETApp/MDV-FAW/mdvHb/src/js/viewModels/cellTabs/weekChartOne.js</file>
+            <file>file:/D:/Apps/medicine/src/js/views/monthChart.html</file>
+            <file>file:/D:/Apps/medicine/src/index.html</file>
+            <file>file:/D:/Apps/medicine/src/js/viewModels/dailyChart.js</file>
+            <file>file:/D:/Apps/medicine/src/js/cordovaMocks.js</file>
+            <file>file:/D:/Apps/medicine/src/js/main.js</file>
+            <file>file:/D:/Apps/medicine/src/js/main-release-paths.json</file>
+            <file>file:/D:/Apps/medicine/src/js/views/login.html</file>
+            <file>file:/D:/Apps/medicine/src/js/appController.js</file>
+            <file>file:/D:/Apps/medicine/src/js/views/dailyChart.html</file>
+            <file>file:/D:/Apps/medicine/src/js/viewModels/login.js</file>
         </group>
     </open-files>
 </project-private>

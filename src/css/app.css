@@ -603,3 +603,9 @@ demo-chart-three-d-effect-control oj-buttonset-one , demo-chart-orientation-cont
     margin: 30px;
     font-size: 26px;
 }
+.align_left{
+    text-align: left
+}
+.align_right{
+    text-align: right
+}

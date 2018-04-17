@@ -54,13 +54,23 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     data = data.substring(35, data.length - 15);
                     console.log(data);
                     let tmpBatchids = JSON.parse(data);
+                    tmpBatchids.sort(function(a,b){
+                        if(a.Value.name>b.Value.name){
+                            return 1;
+                        }else{
+                            return -1;
+                        }
+                        
+                    })
                     let topBatchids = [];
                     for (let i = 0; i < tmpBatchids.length; i++) {
                         let topBatchid = {};
                         topBatchid.batchid = tmpBatchids[i].Value.name;
-
-
                         topBatchids.unshift(topBatchid);
+                        if(i>100)
+                        {
+                            topBatchids.pop();
+                        }
                     }
 
                     self.dataprovider(new oj.ArrayDataProvider(topBatchids, {idAttribute: 'DepartmentId'}));
@@ -68,7 +78,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // view("异常！");  
-                    //alert("error");
+                    
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log("errorThrown=" + errorThrown);

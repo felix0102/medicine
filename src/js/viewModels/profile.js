@@ -10,6 +10,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojbutton', 'oj
 
             function ProfileViewModel() {
                 var self = this;
+                
                 self.LabelName = ko.observable("ddd");
                 self.pageTitle = ko.observable("我的信息");
                 self.version = VERSION;
@@ -119,10 +120,11 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojbutton', 'oj
                                     self.dataprovider(new oj.ArrayDataProvider(topBatchids, {idAttribute: 'DepartmentId'}));
                                     //console.log(batchids.length);
                                     
+                                    
                                 },
                                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                                     // view("异常！");  
-                                    //alert("error");
+                                    
                                     console.log(XMLHttpRequest);
                                     console.log(textStatus);
                                     console.log("errorThrown=" + errorThrown);
@@ -135,7 +137,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojbutton', 'oj
                         },
                         error: function (XMLHttpRequest, textStatus, errorThrown) {
                             // view("异常！");  
-                            //alert("error");
+                            
                             console.log(XMLHttpRequest);
                             console.log(textStatus);
                             console.log("errorThrown=" + errorThrown);

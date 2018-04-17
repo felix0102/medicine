@@ -94,17 +94,17 @@
                 备注：医院企业负责对进货,使用和销售环节的信息，进行准确及时的录入，药品以批次号为唯一标志，进行药品信息的录入和查询。
             </div>
         </div>
-        
-        
-        
-        
-        <oj-dialog style="display:none" id="modalDialogFactory" title="制药厂：药品出库">
-            <div slot="body">
-                出库药品：
+
+
+
+
+        <oj-dialog style="display:none" id="modalDialogFactory" class="align_left" title="制药厂：药品出库">
+            <div slot="body" class="align_left">
+                出库药品：<span data-bind="text:currentMedicine"></span>
                 <br/>批次号：<span data-bind="text:batchid"></span>
                 <oj-input-text id="text-input-memoFactory" value="{{memo}}" placeholder="备注信息"></oj-input-text>
             </div>
-            <div slot="footer">
+            <div slot="body" class="align_right">
                 <oj-button id="okButton" data-bind="click: function() {
                   document.querySelector('#modalDialogFactory').close();
                 }">  取消出库
@@ -114,7 +114,7 @@
             </div>
         </oj-dialog>
         <oj-dialog style="display:none" id="modalDialogSuperviser" title="质检:药品信息">
-            <div slot="body">
+            <div slot="body" class="align_left">
 
                 药品厂商：<span data-bind="text:medicineFactory"></span>
                 <br/>药品批次：<span data-bind="text:batchid"></span>
@@ -123,7 +123,7 @@
                 <br/>出库时间：<span data-bind="text:medicineTime"></span>
                 <oj-input-text id="text-input-memoSuperviser" value="{{memo}}" placeholder="备注信息"></oj-input-text>
             </div>
-            <div slot="footer">
+            <div slot="body" class="align_right">
                 <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonQualified]]'>  合格
                 </oj-button>
                 <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonNotQualified]]'>  不合格
@@ -136,7 +136,7 @@
 
         </oj-dialog>
         <oj-dialog style="display:none" id="modalDialogTransport" title="药品运输:药品信息">
-            <div slot="body">
+            <div slot="body" class="align_left">
 
                 药品厂商：<span data-bind="text:medicineFactory"></span>
                 <br/>药品批次：<span data-bind="text:batchid"></span>
@@ -150,7 +150,7 @@
                 </oj-checkboxset>
                 <oj-input-text id="text-input-memoTransport" value="{{memo}}" placeholder="备注信息"></oj-input-text>
             </div>
-            <div slot="footer" >
+            <div slot="body" class="align_right" >
 
                 <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonTransportStart]]'>  运输开始
                 </oj-button>
@@ -164,7 +164,7 @@
 
         </oj-dialog>
         <oj-dialog style="display:none" id="modalDialogPharmacy" title="药房药品登记信息:药品信息">
-            <div slot="body">
+            <div slot="body" class="align_left">
 
                 药品厂商：<span data-bind="text:medicineFactory"></span>
                 <br/>药品批次：<span data-bind="text:batchid"></span>
@@ -173,27 +173,22 @@
                 <br/>出库时间：<span data-bind="text:medicineTime"></span>
                 <oj-input-text id="text-input-memoPharmacy" value="{{memo}}" placeholder="备注信息"></oj-input-text>
             </div>
-            <div slot="footer" data-bind="style: { display:superviserCheck}">
+            <div slot="body" class="align_right" >
 
-                <oj-button id="okButton" on-click='[[buttonPharmacyIn]]'>  药品进货
+                <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonPharmacyIn]]'>  药品进货
                 </oj-button>
-                <oj-button id="okButton" on-click='[[buttonPharmacyOut]]'>  药品销售
+                <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonPharmacyOut]]'>  药品销售
                 </oj-button>
                 <oj-button id="okButton" data-bind="click: function() {
                   document.querySelector('#modalDialogPharmacy').close();
                 }">  关闭
                 </oj-button>
             </div>
-            <div slot="footer" data-bind="style: { display:superviserClose}">
-                <oj-button id="okButton" data-bind="click: function() {
-                  document.querySelector('#modalDialogPharmacy').close();
-                }">  关闭
-                </oj-button>
-            </div>
+            
         </oj-dialog>
-        
+
         <oj-dialog style="display:none" id="modalDialogHospital" title="医院药品登记信息:药品信息">
-            <div slot="body">
+            <div slot="body" class="align_left">
 
                 药品厂商：<span data-bind="text:medicineFactory"></span>
                 <br/>药品批次：<span data-bind="text:batchid"></span>
@@ -202,7 +197,7 @@
                 <br/>出库时间：<span data-bind="text:medicineTime"></span>
                 <oj-input-text id="text-input-memoHospital" value="{{memo}}" placeholder="备注信息"></oj-input-text>
             </div>
-            <div slot="footer">
+            <div slot="body" class="align_right" >
 
                 <oj-button id="okButton" data-bind="style: { display:superviserCheck}" on-click='[[buttonHospitalIn]]'>  药品进货
                 </oj-button>
@@ -213,17 +208,32 @@
                 }">  关闭
                 </oj-button>
             </div>
-            
+
         </oj-dialog>
-        <oj-dialog style="display:none" id="modalDialogLoading" title="系统提示">
-            <div slot="body" class="div_height_300">
+        <oj-dialog style="display:none" id="modalDialogLoading" title="系统提示:">
+            <div slot="body" class="align_left div_height_300">
                 系统正在处理中请稍等......
             </div>
         </oj-dialog>
 
-    </div>
-    <div class='div_height_100'></div>
+        <div id="dialogWrapper" class="div_height_300">
+            <oj-dialog style="display:none" id="modalDialogAlert" title="系统提示:">
+                <div slot="body" class="align_left div_height_100">
+                    <span data-bind="text:sysTip"></span>
+                </div>
 
-</div>
+                <div slot="body" class="align_right" >
+                    <oj-button id="okButton" class="align_left" data-bind="click: function() {
+                  document.querySelector('#modalDialogAlert').close();
+                }">  确定
+                    </oj-button>
+                </div>
+            </oj-dialog>
+
+        </div>
+
+        <div class='div_height_100'></div>
+
+    </div>
 
 

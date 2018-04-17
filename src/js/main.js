@@ -7,7 +7,7 @@
 /**
  * Example of Require.js boostrap javascript
  */
-const VERSION="1.0.1";
+const VERSION="1.0.2";
 const WWW_SERVER="http://www.4exam.cn"
 var BCS_URL = "http://129.157.179.22:3019";
 var BCS_CONTROL = "http://129.157.179.22:3011";

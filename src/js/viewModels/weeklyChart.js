@@ -48,7 +48,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                 data: JSON.stringify(payload),
                 success: function (data) {
                     modalDialogLoading.close();
-                    // alert(self.decryptByDES(data) );
+                    
                     data = data.replace(/[\'\\\/\b\f\n]/g, '');
                     data = data.substring(35, data.length - 15);
                     console.log(data);
@@ -70,7 +70,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // view("异常！");  
-                    //alert("error");
+                    
                     console.log(XMLHttpRequest);
                     console.log(textStatus);
                     console.log("errorThrown=" + errorThrown);
