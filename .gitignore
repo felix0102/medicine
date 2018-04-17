@@ -6,7 +6,7 @@
 /hybrid/node_modules
 /hybrid/platforms
 /hybrid/www/*
-
+!/hybrid/platforms/platforms.json
 !hybrid/plugins
 hybrid/plugins/*
 !hybrid/plugins/fetch.json
