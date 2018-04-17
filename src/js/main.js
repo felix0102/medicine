@@ -35,7 +35,7 @@ function  formatTime(date) {
     return [year, month, day].map(formatNumber).join('')  + [hour, minute, second].map(formatNumber).join('')
 }
 function  initBatchid() {
-    let date = new Date();
+    var date = new Date();
     const year = date.getFullYear()
     const month = date.getMonth() + 1
     const day = date.getDate()

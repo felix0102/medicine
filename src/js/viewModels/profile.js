@@ -93,14 +93,14 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'ojs/ojbutton', 'oj
                         type: 'get',
                         success: function (res) {
                             console.log("res:" + JSON.stringify(res));
-                            let nodes = res
-                            let liveNodes = 0;
-                            let allNodes = nodes.peers.concat(nodes.orderers).concat(nodes.gateways).concat(nodes.fabricCAs);
+                            var nodes = res
+                            var liveNodes = 0;
+                            var allNodes = nodes.peers.concat(nodes.orderers).concat(nodes.gateways).concat(nodes.fabricCAs);
                             allNodes.forEach(function (node) {
                                 if (node.status !== 'down')
                                     liveNodes++;
                             });
-                            let topBatchids = [{}];
+                            var topBatchids = [{}];
                             topBatchids[0].running = liveNodes;
                             ;
                             topBatchids[0].stop = (allNodes.length - liveNodes);

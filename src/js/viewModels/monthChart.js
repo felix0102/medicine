@@ -35,12 +35,12 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
         
         self.batchidInit = listBatchid();
         function listBatchid() {
-            let  currentDate = new Date();
+            var  currentDate = new Date();
 
-            let time = formatTime(currentDate);
+            var time = formatTime(currentDate);
             //console.log("time:" + time);
             // new batchid save to super ledger block 
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "getInfoHistory", "args": [KEY_BATCH], "chaincodeVer": BCS_VERSION};
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "getInfoHistory", "args": [KEY_BATCH], "chaincodeVer": BCS_VERSION};
             //console.log(JSON.stringify(payload));
             
             var aj = $.ajax({
@@ -53,7 +53,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     data = data.replace(/[\'\\\/\b\f\n]/g, '');
                     data = data.substring(35, data.length - 15);
                     console.log(data);
-                    let tmpBatchids = JSON.parse(data);
+                    var tmpBatchids = JSON.parse(data);
                     tmpBatchids.sort(function(a,b){
                         if(a.Value.name>b.Value.name){
                             return 1;
@@ -62,9 +62,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                         }
                         
                     })
-                    let topBatchids = [];
-                    for (let i = 0; i < tmpBatchids.length; i++) {
-                        let topBatchid = {};
+                    var topBatchids = [];
+                    for (var i = 0; i < tmpBatchids.length; i++) {
+                        var topBatchid = {};
                         topBatchid.batchid = tmpBatchids[i].Value.name;
                         topBatchids.unshift(topBatchid);
                         if(i>100)

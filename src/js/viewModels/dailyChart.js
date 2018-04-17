@@ -15,7 +15,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
      */
     function dailyChartContentViewModel() {
         var self = this;
-        let pageTitle1 = "";
+        var pageTitle1 = "";
         if (USER_ROLE == "factory")
         {
             pageTitle1 = USERNAME + "制药厂";
@@ -51,13 +51,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
         self.initUserRole = initUserRole();
 
         self.buttonClick = function (data) {
-            let  currentDate = new Date();
-            let batchid = initBatchid();
-            let selectedMedicine = radiosetBasicDemoId.value;
+            var  currentDate = new Date();
+            var batchid = initBatchid();
+            var selectedMedicine = radiosetBasicDemoId.value;
             self.batchid(batchid);
             console.log("batchid:" + batchid + ":selectedMedicine:" + selectedMedicine);
             console.log("BCS_URL:" + BCS_URL);
-            let time = formatTime(currentDate);
+            var time = formatTime(currentDate);
             console.log("time:" + time);
 
             modalDialogFactory.open();
@@ -68,9 +68,9 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
         };
         self.buttonFactory = function (data) {
 
-            let  currentDate = new Date();
-            let batchid = self.batchid();
-            let memo = self.memo();
+            var  currentDate = new Date();
+            var batchid = self.batchid();
+            var memo = self.memo();
             if (memo.length == 0)
             {
                 self.sysTip("请输入备注信息.");
@@ -78,10 +78,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                 return;
             }
             console.log("batchid:" + batchid);
-            let time = formatTime(new Date());
-            let selectedMedicine = self.currentMedicine();
+            var time = formatTime(new Date());
+            var selectedMedicine = self.currentMedicine();
             // new batchid save to super ledger block 
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [KEY_BATCH, "batchid", batchid, "starttime", "endtime", "status", "memo", time], "chaincodeVer": BCS_VERSION};
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [KEY_BATCH, "batchid", batchid, "starttime", "endtime", "status", "memo", time], "chaincodeVer": BCS_VERSION};
             console.log(JSON.stringify(payload));
             modalDialogLoading.open();
             var aj = $.ajax({
@@ -92,7 +92,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                 success: function (data) {
 
                     console.log("batchid" + batchid);
-                    let name = self.pageTitle();
+                    var name = self.pageTitle();
                     payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "factory", name, time, "endtime", selectedMedicine, memo, time], "chaincodeVer": BCS_VERSION};
                     console.log(JSON.stringify(payload));
                     aj = $.ajax({
@@ -102,7 +102,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                         data: JSON.stringify(payload),
                         success: function (data) {
 
-                            let dataJson = parseBlockDataSet(data);
+                            var dataJson = parseBlockDataSet(data);
                             if (dataJson.returnCode === "Success")
                             {
 
@@ -144,15 +144,15 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
         };
         self.buttonBatchidCheck = function (data) {
-            let  currentDate = new Date();
-            let batchid = self.batchid();
+            var  currentDate = new Date();
+            var batchid = self.batchid();
             g_currentBatchid = batchid;
             console.log("batchid:" + batchid);
             console.log("BCS_URL:" + BCS_URL);
-            let time = formatTime(currentDate);
+            var time = formatTime(currentDate);
             console.log("time:" + time);
             // new batchid save to super ledger block 
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "getInfoHistory", "args": [batchid], "chaincodeVer": BCS_VERSION};
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "getInfoHistory", "args": [batchid], "chaincodeVer": BCS_VERSION};
             //console.log(JSON.stringify(payload));
             modalDialogLoading.open();
             var aj = $.ajax({
@@ -164,7 +164,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     console.log(data);
                     modalDialogLoading.close();
 
-                    let returnCode = data.substring();
+                    var returnCode = data.substring();
                     data = parseBlockDataGet(data);
                     console.log(data);
 
@@ -173,7 +173,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     self.medicineFactory("");
                     self.medicineTime("");
                     self.medicineMemo("");
-                    for (let i = 0; i < data.length; i++)
+                    for (var i = 0; i < data.length; i++)
                     {
                         if (data[i].Value.flag == "factory") {
                             self.medicineFactory(data[i].Value.name);
@@ -212,17 +212,17 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
         };
         self.buttonQualified = function (data) {
-            let  currentDate = new Date();
-            let batchid = self.batchid();
+            var  currentDate = new Date();
+            var batchid = self.batchid();
             g_currentBatchid = batchid;
-            let memo = self.memo();
+            var memo = self.memo();
             console.log("batchid:" + batchid);
             console.log("BCS_URL:" + BCS_URL);
-            let time = formatTime(currentDate);
+            var time = formatTime(currentDate);
             console.log("time:" + time);
             // new batchid save to super ledger block 
-            let name = self.pageTitle();
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "superviser", name, time, "endtime", "合格", memo, time], "chaincodeVer": BCS_VERSION};
+            var name = self.pageTitle();
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "superviser", name, time, "endtime", "合格", memo, time], "chaincodeVer": BCS_VERSION};
             //console.log(JSON.stringify(payload));
             modalDialogLoading.open();
             var aj = $.ajax({
@@ -252,10 +252,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
         };
 
         self.buttonNotQualified = function (data) {
-            let  currentDate = new Date();
-            let batchid = self.batchid();
+            var  currentDate = new Date();
+            var batchid = self.batchid();
             g_currentBatchid = batchid;
-            let memo = self.memo();
+            var memo = self.memo();
             if (memo.length == 0)
             {
                 self.sysTip("请输入备注信息.");
@@ -264,10 +264,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
             }
             console.log("batchid:" + batchid);
             console.log("BCS_URL:" + BCS_URL);
-            let time = formatTime(currentDate);
+            var time = formatTime(currentDate);
             console.log("time:" + time);
-            let name = self.pageTitle();
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "superviser", name, time, "endtime", "不合格", memo, time], "chaincodeVer": BCS_VERSION};
+            var name = self.pageTitle();
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "superviser", name, time, "endtime", "不合格", memo, time], "chaincodeVer": BCS_VERSION};
             //console.log(JSON.stringify(payload));
             modalDialogLoading.open();
             var aj = $.ajax({
@@ -302,17 +302,17 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
             //console.log(checkboxColdchain.value);
 
-            let  currentDate = new Date();
-            let batchid = self.batchid();
+            var  currentDate = new Date();
+            var batchid = self.batchid();
             g_currentBatchid = batchid;
-            let memo = checkboxColdchain.value + ":" + self.memo();
+            var memo = checkboxColdchain.value + ":" + self.memo();
 
             console.log("batchid:" + batchid);
             console.log("BCS_URL:" + BCS_URL);
-            let time = formatTime(currentDate);
+            var time = formatTime(currentDate);
             console.log("time:" + time);
-            let name = self.pageTitle();
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "开始", memo, time], "chaincodeVer": BCS_VERSION};
+            var name = self.pageTitle();
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "开始", memo, time], "chaincodeVer": BCS_VERSION};
             //console.log(JSON.stringify(payload));
             modalDialogLoading.open();
             var aj = $.ajax({
@@ -343,17 +343,17 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
         };
         self.buttonTransportEnd = function (data) {
-            let  currentDate = new Date();
-            let batchid = self.batchid();
+            var  currentDate = new Date();
+            var batchid = self.batchid();
             g_currentBatchid = batchid;
-            let memo = checkboxColdchain.value + ":" + self.memo();
+            var memo = checkboxColdchain.value + ":" + self.memo();
 
             console.log("batchid:" + batchid);
             console.log("BCS_URL:" + BCS_URL);
-            let time = formatTime(currentDate);
+            var time = formatTime(currentDate);
             console.log("time:" + time);
-            let name = self.pageTitle();
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "结束", memo, time], "chaincodeVer": BCS_VERSION};
+            var name = self.pageTitle();
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "结束", memo, time], "chaincodeVer": BCS_VERSION};
             //console.log(JSON.stringify(payload));
             modalDialogLoading.open();
             var aj = $.ajax({
@@ -385,17 +385,17 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
         };
         self.buttonPharmacyIn = function (data) {
-            let  currentDate = new Date();
-            let batchid = self.batchid();
+            var  currentDate = new Date();
+            var batchid = self.batchid();
             g_currentBatchid = batchid;
-            let memo = self.memo();
+            var memo = self.memo();
 
             console.log("batchid:" + batchid);
             console.log("BCS_URL:" + BCS_URL);
-            let time = formatTime(currentDate);
+            var time = formatTime(currentDate);
             console.log("time:" + time);
-            let name = self.pageTitle();
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "进货", memo, time], "chaincodeVer": BCS_VERSION};
+            var name = self.pageTitle();
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "进货", memo, time], "chaincodeVer": BCS_VERSION};
             //console.log(JSON.stringify(payload));
             modalDialogLoading.open();
             var aj = $.ajax({
@@ -426,17 +426,17 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
         };
         self.buttonPharmacyOut = function (data) {
-            let  currentDate = new Date();
-            let batchid = self.batchid();
+            var  currentDate = new Date();
+            var batchid = self.batchid();
             g_currentBatchid = batchid;
-            let memo = self.memo();
+            var memo = self.memo();
 
             console.log("batchid:" + batchid);
             console.log("BCS_URL:" + BCS_URL);
-            let time = formatTime(currentDate);
+            var time = formatTime(currentDate);
             console.log("time:" + time);
-            let name = self.pageTitle();
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "销售", memo, time], "chaincodeVer": BCS_VERSION};
+            var name = self.pageTitle();
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "销售", memo, time], "chaincodeVer": BCS_VERSION};
             //console.log(JSON.stringify(payload));
             modalDialogLoading.open();
             var aj = $.ajax({
@@ -468,17 +468,17 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
         };
 
         self.buttonHospitalIn = function (data) {
-            let  currentDate = new Date();
-            let batchid = self.batchid();
+            var  currentDate = new Date();
+            var batchid = self.batchid();
             g_currentBatchid = batchid;
-            let memo = self.memo();
+            var memo = self.memo();
 
             console.log("batchid:" + batchid);
             console.log("BCS_URL:" + BCS_URL);
-            let time = formatTime(currentDate);
+            var time = formatTime(currentDate);
             console.log("time:" + time);
-            let name = self.pageTitle();
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "进货", memo, time], "chaincodeVer": BCS_VERSION};
+            var name = self.pageTitle();
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "进货", memo, time], "chaincodeVer": BCS_VERSION};
             //console.log(JSON.stringify(payload));
             modalDialogLoading.open();
             var aj = $.ajax({
@@ -509,17 +509,17 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
         };
         self.buttonHospitalOut = function (data) {
-            let  currentDate = new Date();
-            let batchid = self.batchid();
+            var  currentDate = new Date();
+            var batchid = self.batchid();
             g_currentBatchid = batchid;
-            let memo = self.memo();
+            var memo = self.memo();
 
             console.log("batchid:" + batchid);
             console.log("BCS_URL:" + BCS_URL);
-            let time = formatTime(currentDate);
+            var time = formatTime(currentDate);
             console.log("time:" + time);
-            let name = self.pageTitle();
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "使用", memo, time], "chaincodeVer": BCS_VERSION};
+            var name = self.pageTitle();
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "setInfo", "args": [batchid, "transport", name, time, "endtime", "使用", memo, time], "chaincodeVer": BCS_VERSION};
             //console.log(JSON.stringify(payload));
             modalDialogLoading.open();
             var aj = $.ajax({

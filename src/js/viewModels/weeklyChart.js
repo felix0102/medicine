@@ -32,13 +32,13 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
 
 
         self.buttonMedicineInfo = function (data) {
-            let  currentDate = new Date();
+            var  currentDate = new Date();
 
-            let time = formatTime(currentDate);
-            let batchid = self.batchid();
+            var time = formatTime(currentDate);
+            var batchid = self.batchid();
             //console.log("time:" + time);
             // new batchid save to super ledger block 
-            let payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "getInfoHistory", "args": [batchid], "chaincodeVer": BCS_VERSION};
+            var payload = {"channel": BCS_CHANNEL, "chaincode": BCS_CHAINCODE, "method": "getInfoHistory", "args": [batchid], "chaincodeVer": BCS_VERSION};
             //console.log(JSON.stringify(payload));
             modalDialogLoading.open();
             var aj = $.ajax({
@@ -52,10 +52,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojknockout', 'ojs/ojselectcombo
                     data = data.replace(/[\'\\\/\b\f\n]/g, '');
                     data = data.substring(35, data.length - 15);
                     console.log(data);
-                    let tmpBatchids = JSON.parse(data);
-                    let topBatchids = [];
-                    for (let i = 0; i < tmpBatchids.length; i++) {
-                        let topBatchid = {};
+                    var tmpBatchids = JSON.parse(data);
+                    var topBatchids = [];
+                    for (var i = 0; i < tmpBatchids.length; i++) {
+                        var topBatchid = {};
                         topBatchid.batchid = tmpBatchids[i].Value.name + ":" + tmpBatchids[i].Value.status + ":" + tmpBatchids[i].Value.memo + ":" + tmpBatchids[i].Value.time;
                         topBatchid.name = tmpBatchids[i].Value.name ;
                         topBatchid.status = tmpBatchids[i].Value.status ;
